@@ -134,77 +134,75 @@ export default class LineGraph extends PureComponent {
     } = this.state;
 
     return (
-      <div
-        className="highlight-bar-charts"
-        style={{ userSelect: "none", width: "100%", minWidth: "1000px" }}
-      >
+      <div className="highlight-bar-charts select-none w-full">
         <button
           type="button"
-          className="btn update bg-blue-900 mb-2 rounded-sm y-4 text-sm p-1"
+          className="btn update bg-blue-900 mb-2 rounded-sm py-1 px-2 text-sm text-white hover:bg-blue-800 focus:outline-none focus:ring focus:ring-blue-300"
           onClick={this.zoomOut.bind(this)}
         >
           Zoom Out
         </button>
 
-        <ResponsiveContainer width="100%" height={400}>
-          <LineChart
-            width={800}
-            height={400}
-            data={data}
-            onMouseDown={(e) => this.setState({ refAreaLeft: e.activeLabel })}
-            onMouseMove={(e) =>
-              this.state.refAreaLeft &&
-              this.setState({ refAreaRight: e.activeLabel })
-            }
-            // eslint-disable-next-line react/jsx-no-bind
-            onMouseUp={this.zoom.bind(this)}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis
-              allowDataOverflow
-              dataKey="name"
-              domain={[left, right]}
-              type="number"
-            />
-            <YAxis
-              allowDataOverflow
-              domain={[bottom, top]}
-              type="number"
-              yAxisId="1"
-            />
-            <YAxis
-              orientation="right"
-              allowDataOverflow
-              domain={[bottom2, top2]}
-              type="number"
-              yAxisId="2"
-            />
-            <Tooltip />
-            <Line
-              yAxisId="1"
-              type="natural"
-              dataKey="cost"
-              stroke="#8884d8"
-              animationDuration={300}
-            />
-            <Line
-              yAxisId="2"
-              type="natural"
-              dataKey="impression"
-              stroke="#82ca9d"
-              animationDuration={300}
-            />
-
-            {refAreaLeft && refAreaRight ? (
-              <ReferenceArea
-                yAxisId="1"
-                x1={refAreaLeft}
-                x2={refAreaRight}
-                strokeOpacity={0.3}
+        <div className="flex justify-center items-center w-full">
+          <ResponsiveContainer width="100%" height={400}>
+            <LineChart
+              width={800}
+              height={400}
+              data={data}
+              onMouseDown={(e) => this.setState({ refAreaLeft: e.activeLabel })}
+              onMouseMove={(e) =>
+                this.state.refAreaLeft &&
+                this.setState({ refAreaRight: e.activeLabel })
+              }
+              onMouseUp={this.zoom.bind(this)}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis
+                allowDataOverflow
+                dataKey="name"
+                domain={[left, right]}
+                type="number"
               />
-            ) : null}
-          </LineChart>
-        </ResponsiveContainer>
+              <YAxis
+                allowDataOverflow
+                domain={[bottom, top]}
+                type="number"
+                yAxisId="1"
+              />
+              <YAxis
+                orientation="right"
+                allowDataOverflow
+                domain={[bottom2, top2]}
+                type="number"
+                yAxisId="2"
+              />
+              <Tooltip />
+              <Line
+                yAxisId="1"
+                type="natural"
+                dataKey="cost"
+                stroke="#8884d8"
+                animationDuration={300}
+              />
+              <Line
+                yAxisId="2"
+                type="natural"
+                dataKey="impression"
+                stroke="#82ca9d"
+                animationDuration={300}
+              />
+
+              {refAreaLeft && refAreaRight ? (
+                <ReferenceArea
+                  yAxisId="1"
+                  x1={refAreaLeft}
+                  x2={refAreaRight}
+                  strokeOpacity={0.3}
+                />
+              ) : null}
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     );
   }
