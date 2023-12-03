@@ -8,10 +8,10 @@ export default function Home() {
   return (
     <DashboardLayout>
       <Card rowSpan={1} colSpan={1}>
-        <KPI label={"Test"} value={5} />
+        <KPI label={"GDP"} value={5} />
       </Card>
       <Card rowSpan={1} colSpan={1}>
-        <KPI label={"Test"} value={5} />
+        <KPI label={"GDP Per Capita"} value={5} />
       </Card>
       <Card rowSpan={1} colSpan={1}>
         <KPI label={"Test"} value={5} />
