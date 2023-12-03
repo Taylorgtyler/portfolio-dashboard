@@ -137,7 +137,7 @@ export default class LineGraph extends PureComponent {
       <div className="highlight-bar-charts select-none w-full">
         <button
           type="button"
-          className="btn update bg-blue-900 mb-2 rounded-sm py-1 px-2 text-sm text-white hover:bg-blue-800 focus:outline-none focus:ring focus:ring-blue-300"
+          className="btn update bg-blue-900 mb-2 rounded-md py-2 px-4 text-sm text-white hover:bg-blue-700 focus:outline-none focus:ring-1 focus:ring-blue-300 focus:ring-opacity-20 shadow-lg transition duration-200 ease-in-out transform hover:scale-105"
           onClick={this.zoomOut.bind(this)}
         >
           Zoom Out
